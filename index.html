@@ -66,13 +66,13 @@ let elForm = document.getElementById('container');
 
 button.addEventListener('click', function(){
 let content = document.getElementById('content').value;
-let numAr = content.split(',');
+let numAr = content.split(',').map(Number);
 sorting(numAr);
 }, false);
 
 elForm.addEventListener('submit', function(event){
 let content = document.getElementById('content').value;
-let numAr = content.split(',');
+let numAr = content.split(',').map(Number);
 sorting(numAr);
 event.preventDefault();
 }, false);
