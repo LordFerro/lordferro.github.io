@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sort Code For Arrays</title>
+    <style type="text/css">
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300&display=swap');
+    * {
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
+        margin: 0px;
+    }
+    
+    </style>
+</head>
+
+<body>
+<header>
+<h1 align = 'center'>Sort a list of numbers</h1>
+<br>
+<p align = 'center'>Given an array of numbers, a JS code will sort it <br> without using the JS .sort() method.</p>
+</header>
+<br>
+<hr>
+<br>
+<p>Type your <b>numbers SEPARATED BY A COMMA</b> (for example: 9,4,1,5,6,2) here:</p>
+<form action="post" id="container">
+<input id = 'content' type="text" name="Numbers" placeholder="Put your numbers here...">
+<input type="button" value ="submit" id="send">
+</form>
+<br>
+<h2>Here will appear your sorted list of numbers...</h2>
+<p id="sorted"></p>
+<script>
+let chek = 1;
+function sorting(numAr) {
+  do {
+    let n = 1;
+    for (let i = 0; i <= numAr.length; i++) {
+      if (numAr[i] > numAr[n]) {
+        let x = numAr[i];
+        let y = numAr[n];
+        numAr[i] = y;
+        numAr[n] = x;
+      }
+      n++;
+    }
+    chek++;
+  } while (chek < numAr.length);
+  document.getElementById('sorted').innerHTML = numAr;
+}
+
+
+
+let button = document.getElementById('send');
+
+button.addEventListener('click', function(){
+let content = document.getElementById('content').value;
+let numAr = content.split(',');
+sorting(numAr);
+
+});
+
+</script>
+</body>
+</html>
