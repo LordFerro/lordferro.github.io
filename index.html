@@ -67,20 +67,20 @@ let elForm = document.getElementById('container');
 button.addEventListener('click', function(){
 let content = document.getElementById('content').value;
 let numAr = content.split(',').map(Number);
-if(isNaN(numAr)) {
+if(numAr.some(isNaN)){
   alert('Hey, pay attention!👀 Only numbers and commas in the input.');
-}
+};
 sorting(numAr);
 }, false);
 
 elForm.addEventListener('submit', function(event){
 let content = document.getElementById('content').value;
 let numAr = content.split(',').map(Number);
-if(isNaN(numAr)) {
+if(numAr.some(isNaN)){
   alert('Hey, pay attention!👀 Only numbers and commas in the input.');
-}
-sorting(numAr);
+};
 event.preventDefault();
+sorting(numAr);
 }, false);
 </script>
 </body>
