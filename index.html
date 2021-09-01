@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <title>Sort Code For Arrays</title>
+    <link rel="shortcut icon" href="https://cdn.discordapp.com/attachments/848574230571647006/882577018087174154/numbers.jpg" type="image/x-icon">
     <style type="text/css">
     @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300&display=swap');
     * {
@@ -34,8 +35,9 @@ let chek = 1;
 function sorting(numAr) {
   do {
     let n = 1;
+    chek = 0;
     for (let i = 0; i <= numAr.length; i++) {
-      if (numAr[i] > numAr[n]) {
+      if (numAr[i] >= numAr[n]) {
         let x = numAr[i];
         let y = numAr[n];
         numAr[i] = y;
@@ -43,22 +45,37 @@ function sorting(numAr) {
       }
       n++;
     }
-    chek++;
-  } while (chek < numAr.length);
+    let h = 1;
+    for(let i = 0; i<= numAr.length; i++) {
+      if(numAr[i] > numAr[h]) {
+        chek = 1;
+        break;
+      } else {
+        chek = 0;
+        h++;
+      }
+    }
+  } while (chek === 1);
   document.getElementById('sorted').innerHTML = numAr;
 }
 
 
 
 let button = document.getElementById('send');
+let elForm = document.getElementById('container');
 
 button.addEventListener('click', function(){
 let content = document.getElementById('content').value;
 let numAr = content.split(',');
 sorting(numAr);
+}, false);
 
-});
-
+elForm.addEventListener('submit', function(event){
+let content = document.getElementById('content').value;
+let numAr = content.split(',');
+sorting(numAr);
+event.preventDefault();
+}, false);
 </script>
 </body>
 </html>
