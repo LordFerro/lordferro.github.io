@@ -9,7 +9,9 @@
         font-family: 'IBM Plex Sans Arabic', sans-serif;
         margin: 0px;
     }
-    
+    form {
+      font-size: large;
+    }
     </style>
 </head>
 
@@ -22,7 +24,18 @@
 <br>
 <hr>
 <br>
+<form action="" id="options">
+  <h2>Do you want to sort in ascending or descending order?</h2>
+  <br>
+  <input type="radio" name="sorting" id="ascending"> <b>Ascending</b>
+  <br>
+  <input type="radio" name="sorting" id="descending"> <b>Descending</b>
+</form>
+<br>
+<hr>
+<br>
 <p>Type your <b>numbers SEPARATED BY A COMMA</b> (for example: 9,4,1,5,6,2) here:</p>
+<br>
 <form action="post" id="container">
 <input id = 'content' type="text" name="Numbers" placeholder="Put your numbers here...">
 <input type="button" value ="submit" id="send">
@@ -30,9 +43,9 @@
 <br>
 <h2>Here will appear your sorted list of numbers...</h2>
 <p id="sorted"></p>
-<script>
+<script> 
 let chek = 1;
-function sorting(numAr) {
+function ascending(numAr) {
   do {
     let n = 1;
     chek = 0;
@@ -60,27 +73,48 @@ function sorting(numAr) {
 }
 
 
-
 let button = document.getElementById('send');
 let elForm = document.getElementById('container');
-
 button.addEventListener('click', function(){
+if(document.getElementById('ascending').checked) {
 let content = document.getElementById('content').value;
 let numAr = content.split(',').map(Number);
 if(numAr.some(isNaN)){
   alert('Hey, pay attention!👀 Only numbers and commas in the input.');
 };
-sorting(numAr);
+ascending(numAr);
+} else {
+let content = document.getElementById('content').value;
+let numAr = content.split(',').map(Number);
+if(numAr.some(isNaN)){
+  alert('Hey, pay attention!👀 Only numbers and commas in the input.');
+};
+ascending(numAr);
+numAr.reverse();
+document.getElementById('sorted').innerHTML = numAr;
+}
 }, false);
 
 elForm.addEventListener('submit', function(event){
+  if(document.getElementById('ascending').checked) {
 let content = document.getElementById('content').value;
 let numAr = content.split(',').map(Number);
 if(numAr.some(isNaN)){
   alert('Hey, pay attention!👀 Only numbers and commas in the input.');
 };
 event.preventDefault();
-sorting(numAr);
+ascending(numAr);
+} else {
+let content = document.getElementById('content').value;
+let numAr = content.split(',').map(Number);
+if(numAr.some(isNaN)){
+  alert('Hey, pay attention!👀 Only numbers and commas in the input.');
+};
+event.preventDefault();
+ascending(numAr);
+numAr.reverse();
+document.getElementById('sorted').innerHTML = numAr;
+}
 }, false);
 </script>
 </body>
